@@ -11,7 +11,7 @@ public class PlayerInventory : MonoBehaviour
 
     [SerializeField] private List<WastePickUp> carriedWaste = new();
 
-    public bool AddToInventory(WastePickUp waste)
+    public bool AddToCarriedWaste(WastePickUp waste)
     {
         if (waste == null || carryPoint == null)
             return false;
@@ -62,7 +62,7 @@ public class PlayerInventory : MonoBehaviour
     }
 
 
-    public bool RemoveFromInventory(WastePickUp waste)
+    public bool RemoveFromCarriedWaste(WastePickUp waste)
     {
         if (waste == null)
             return false;

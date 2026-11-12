@@ -64,7 +64,7 @@ public class WastePickUp : MonoBehaviour
             return;
         }
 
-        if (playerInventory.AddToInventory(this))
+        if (playerInventory.AddToCarriedWaste(this))
         {
             isCarried = true;
             wasteCollider.enabled = false;

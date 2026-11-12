@@ -31,7 +31,7 @@ public enum WasteType
 {
     Plastic,
     Paper,
-    Glass,
+    //Glass,  will add later 
     Metal,
     Biodegradable,
     Residual

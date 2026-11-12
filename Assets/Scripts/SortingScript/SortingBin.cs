@@ -6,18 +6,52 @@ public class SortingBin : MonoBehaviour
 {
 
     [SerializeField] private WasteType typeOfWasteItAccept;
-    [SerializeField] private int sortedWasteCount = 0;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private TextMeshPro sortedWasteCountText;
     [SerializeField] private WasteManager wasteManager;
     [SerializeField] private PlayerInventory playerInventory;
 
+    [SerializeField] private float sortingDistance = 1.5f;
+
+    public void Awake()
+    {
+        gameManager = FindAnyObjectByType<GameManager>();
+        if(gameManager == null)
+        {
+            Debug.LogError("GameManager not found in the scene.");
+        }
+    }
     private void Update()
     {
-        IsCloseToBin();
+
+    }
+
+    private void OnEnable()
+    {
+        WasteEvents.OnWasteSorted += HandleWasteSorted;
+    }
+
+    private void OnDisable()
+    {
+        WasteEvents.OnWasteSorted -= HandleWasteSorted;
+    }
+
+
+    private void HandleWasteSorted(WasteData wasteData)
+    {
+        if(wasteData.wasteType == typeOfWasteItAccept)
+        {
+            UpdateCountText();
+        }
     }
     private void Start()
     {
-        sortedWasteCountText.text = sortedWasteCount.ToString();
+        wasteManager = FindAnyObjectByType<WasteManager>();
+
+        if (wasteManager == null)
+        {
+            Debug.LogError("WasteManager not found in the scene.");
+        }
     }
 
     public void TrySortTheTrash(WastePickUp wasteToSort)
@@ -34,18 +68,27 @@ public class SortingBin : MonoBehaviour
             return;
         }
 
-        if(typeOfWasteItAccept == wasteToSort.GetWasteData().wasteType)
+        WasteData wasteData = wasteToSort.GetWasteData();
+
+        if (typeOfWasteItAccept == wasteData.wasteType)
         {
-            sortedWasteCount += wasteToSort.GetWasteData().wasteValue;
-            UpdateCountText();
-           
-            playerInventory.RemoveFromInventory(wasteToSort);
+
+
+
+            if (!playerInventory.RemoveFromCarriedWaste(wasteToSort))
+            {
+                Debug.Log("Failed to remove waste from inventory");
+                return;
+            }
+
+
             wasteManager.RemoveFromActiveWaste(wasteToSort);
 
+            WasteEvents.AnnounceWasteSorted(wasteData);
 
             Destroy(wasteToSort.gameObject);
 
-            Debug.Log("Succesfully sorted " + wasteToSort.GetWasteData().wasteName + " into " + typeOfWasteItAccept.ToString() + " bin");
+            Debug.Log("Succesfully sorted " + wasteData.wasteName + " into " + typeOfWasteItAccept.ToString() + " bin");
         }
 
         else
@@ -58,16 +101,32 @@ public class SortingBin : MonoBehaviour
 
     void UpdateCountText()
     {
+        if(gameManager == null)
+        {
+            Debug.LogError("GameManager is not assigned in SortingBin");
+            return;
+        }
+
+        int sortedCount = gameManager.GetTotalSortedValueByType(typeOfWasteItAccept);   
         if (sortedWasteCountText != null)
         {
-            sortedWasteCountText.text = sortedWasteCount.ToString();
+            
+            sortedWasteCountText.text = sortedCount.ToString();
+            Debug.Log("Updated sorted count text for " + typeOfWasteItAccept.ToString() + " bin: " + sortedCount);
+
         }
     }
 
     private bool IsCloseToBin()
     {
 
-        return Vector2.Distance(playerInventory.transform.position, transform.position) < 1.5f;
+        if(playerInventory == null)
+        {
+            Debug.LogError("Player Inventory is not assigned in SortingBin");
+            return false;
+        }
+
+        return Vector2.Distance(playerInventory.transform.position, transform.position) < sortingDistance;
     }
 
 }
