@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wasteSprite: {fileID: -234977128925464273, guid: c3a425035b8bb214fbfeffc617c78013, type: 3}
   wasteHighlight: {fileID: -2726330859488108722, guid: c3a425035b8bb214fbfeffc617c78013, type: 3}
-  wasteType: 3
+  wasteType: 2
   wasteName: Blue Can
   wasteValue: 1
   materialItGives:

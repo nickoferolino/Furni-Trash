@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wasteSprite: {fileID: -8595441653521184338, guid: 8834507c53a9ad045b02a83925d0d9f5, type: 3}
   wasteHighlight: {fileID: -7045541956863077375, guid: 8834507c53a9ad045b02a83925d0d9f5, type: 3}
-  wasteType: 4
+  wasteType: 3
   wasteName: Apple
   wasteValue: 1
   materialItGives:

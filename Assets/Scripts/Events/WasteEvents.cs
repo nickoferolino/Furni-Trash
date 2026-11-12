@@ -10,4 +10,7 @@ public static class WasteEvents
     {
         OnWasteSorted?.Invoke(wasteData);
     }
+
+
+
 }

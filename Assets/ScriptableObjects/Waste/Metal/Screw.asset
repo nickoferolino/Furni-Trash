@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wasteSprite: {fileID: -8465794548910672645, guid: c3a425035b8bb214fbfeffc617c78013, type: 3}
   wasteHighlight: {fileID: -1196440917675390578, guid: c3a425035b8bb214fbfeffc617c78013, type: 3}
-  wasteType: 3
+  wasteType: 2
   wasteName: Screw
   wasteValue: 1
   materialItGives:

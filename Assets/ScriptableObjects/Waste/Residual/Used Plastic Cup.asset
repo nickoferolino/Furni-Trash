@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wasteSprite: {fileID: 8980215355211326940, guid: 2966ea5b7a52dd847b8fce74b4f59bc2, type: 3}
   wasteHighlight: {fileID: 8297613924699675430, guid: 2966ea5b7a52dd847b8fce74b4f59bc2, type: 3}
-  wasteType: 5
+  wasteType: 4
   wasteName: Used Plastic Cup
   wasteValue: 1
   materialItGives:

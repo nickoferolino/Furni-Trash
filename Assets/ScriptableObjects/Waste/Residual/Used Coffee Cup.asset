@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wasteSprite: {fileID: -3357387269750695039, guid: 2966ea5b7a52dd847b8fce74b4f59bc2, type: 3}
   wasteHighlight: {fileID: -4909712749841068591, guid: 2966ea5b7a52dd847b8fce74b4f59bc2, type: 3}
-  wasteType: 5
+  wasteType: 4
   wasteName: Used Coffee Cup
   wasteValue: 1
   materialItGives:

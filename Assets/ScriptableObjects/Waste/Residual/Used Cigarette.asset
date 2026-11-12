@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wasteSprite: {fileID: 3009419797557802496, guid: 2966ea5b7a52dd847b8fce74b4f59bc2, type: 3}
   wasteHighlight: {fileID: 5519466699240935863, guid: 2966ea5b7a52dd847b8fce74b4f59bc2, type: 3}
-  wasteType: 5
+  wasteType: 4
   wasteName: Used Cigarette
   wasteValue: 1
   materialItGives:

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wasteSprite: {fileID: 4280953152880839533, guid: 8834507c53a9ad045b02a83925d0d9f5, type: 3}
   wasteHighlight: {fileID: -6735103063502902211, guid: 8834507c53a9ad045b02a83925d0d9f5, type: 3}
-  wasteType: 4
+  wasteType: 3
   wasteName: Chicken
   wasteValue: 1
   materialItGives:

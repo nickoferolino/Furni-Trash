@@ -29,6 +29,7 @@ public class SortingBin : MonoBehaviour
     private void OnEnable()
     {
         WasteEvents.OnWasteSorted += HandleWasteSorted;
+
     }
 
     private void OnDisable()
@@ -54,49 +55,65 @@ public class SortingBin : MonoBehaviour
         }
     }
 
+
     public void TrySortTheTrash(WastePickUp wasteToSort)
     {
-        if(!IsCloseToBin())
+        string feedback = "";
+
+        if (!IsCloseToBin())
         {
-            Debug.Log("Not close enough to the bin");
+            feedback = "Not close enough to the bin";
+            Debug.Log(feedback);
+            FeedbackEvents.ShowFeedback(feedback);
             return;
         }
 
         if (wasteToSort == null)
         {
-            Debug.Log("Nothing to sort");
+            feedback = "Nothing to sort";
+            Debug.Log(feedback);
+            FeedbackEvents.ShowFeedback(feedback);
             return;
         }
 
         WasteData wasteData = wasteToSort.GetWasteData();
 
+        if (wasteData == null)
+        {
+            feedback = "Invalid waste data";
+            Debug.LogWarning(feedback);
+            FeedbackEvents.ShowFeedback(feedback);
+            return;
+        }
+
         if (typeOfWasteItAccept == wasteData.wasteType)
         {
-
-
-
             if (!playerInventory.RemoveFromCarriedWaste(wasteToSort))
             {
-                Debug.Log("Failed to remove waste from inventory");
+                feedback = "Failed to remove waste from inventory";
+                Debug.LogWarning(feedback);
+                FeedbackEvents.ShowFeedback(feedback);
                 return;
             }
-
 
             wasteManager.RemoveFromActiveWaste(wasteToSort);
 
             WasteEvents.AnnounceWasteSorted(wasteData);
 
+            feedback = $"Correct! +{wasteData.wasteValue}";
+            Debug.Log(feedback);
+            FeedbackEvents.ShowFeedback(feedback);
+
             Destroy(wasteToSort.gameObject);
-
-            Debug.Log("Succesfully sorted " + wasteData.wasteName + " into " + typeOfWasteItAccept.ToString() + " bin");
         }
-
         else
         {
-            Debug.Log("Wrong bin for this waste type");
+            feedback = "Wrong bin for this waste type";
+            Debug.Log(feedback);
+            FeedbackEvents.ShowFeedback(feedback);
         }
-
     }
+
 
 
     void UpdateCountText()

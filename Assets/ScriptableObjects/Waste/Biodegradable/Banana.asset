@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wasteSprite: {fileID: 7463773563397242452, guid: 8834507c53a9ad045b02a83925d0d9f5, type: 3}
   wasteHighlight: {fileID: -7100521976006174109, guid: 8834507c53a9ad045b02a83925d0d9f5, type: 3}
-  wasteType: 4
+  wasteType: 3
   wasteName: Banana
   wasteValue: 1
   materialItGives:

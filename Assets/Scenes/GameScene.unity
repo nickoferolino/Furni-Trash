@@ -482,8 +482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da38ca72d228a0418c9b3bdd1b41efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeOfWasteItAccept: 4
-  totalWasteSorted: 0
+  typeOfWasteItAccept: 3
+  gameManager: {fileID: 0}
   sortedWasteCountText: {fileID: 295927821}
   wasteManager: {fileID: 1579049656}
   playerInventory: {fileID: 945366601}
@@ -751,8 +751,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da38ca72d228a0418c9b3bdd1b41efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeOfWasteItAccept: 3
-  totalWasteSorted: 0
+  typeOfWasteItAccept: 2
+  gameManager: {fileID: 0}
   sortedWasteCountText: {fileID: 1256458071}
   wasteManager: {fileID: 1579049656}
   playerInventory: {fileID: 945366601}
@@ -4824,7 +4824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfWasteItAccept: 0
-  totalWasteSorted: 0
+  gameManager: {fileID: 0}
   sortedWasteCountText: {fileID: 983817743}
   wasteManager: {fileID: 1579049656}
   playerInventory: {fileID: 945366601}
@@ -5006,8 +5006,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da38ca72d228a0418c9b3bdd1b41efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeOfWasteItAccept: 5
-  totalWasteSorted: 0
+  typeOfWasteItAccept: 4
+  gameManager: {fileID: 0}
   sortedWasteCountText: {fileID: 2029569923}
   wasteManager: {fileID: 1579049656}
   playerInventory: {fileID: 945366601}
@@ -5946,7 +5946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfWasteItAccept: 1
-  totalWasteSorted: 0
+  gameManager: {fileID: 0}
   sortedWasteCountText: {fileID: 1873009570}
   wasteManager: {fileID: 1579049656}
   playerInventory: {fileID: 945366601}
@@ -6078,17 +6078,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2686412752417965453, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
-      propertyPath: wasteManager
-      value: 
-      objectReference: {fileID: 1579049656}
-    - target: {fileID: 2686412752417965453, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
       propertyPath: mouseIndicator
       value: 
       objectReference: {fileID: 1914950374}
-    - target: {fileID: 2686412752417965453, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
-      propertyPath: binLayer.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
     - target: {fileID: 3127620513527451340, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.23
@@ -6129,26 +6121,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5477700281922492597, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
-      propertyPath: stackSpacing
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5477700281922492597, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
-      propertyPath: maxInventorySize
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5876604809216239601, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8868582693122877508, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
+    - target: {fileID: 6913523166205325784, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913523166205325784, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152824766371211112, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 1024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1395112987179981038, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 70e0a6927249efd439deaf54a645aa0a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

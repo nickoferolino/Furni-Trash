@@ -1,39 +1,52 @@
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class WastePickUp : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private GameObject player;
     [SerializeField] private float pickUpRange = 1.5f;
-    
-    [SerializeField] bool isCarried = false;
-    private WasteData wasteData;
 
+    [SerializeField] private bool isCarried = false;
+
+    private GameObject player;
+    private WasteData wasteData;
     private PlayerInventory playerInventory;
     private Collider2D wasteCollider;
     private Rigidbody2D rb;
-
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         wasteCollider = GetComponent<Collider2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform.gameObject;
-        if(player == null)
+
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player == null)
         {
-            Debug.LogError("Player GameObject not found in the scene. Please ensure the player has the 'Player' tag.");
+            Debug.LogError("Player not found! Check the Player tag.");
             return;
         }
+
         playerInventory = player.GetComponent<PlayerInventory>();
+
+        if (playerInventory == null)
+        {
+            Debug.LogError("PlayerInventory component not found!");
+        }
     }
 
     public void Initialize(WasteData data)
     {
         wasteData = data;
+
+        if (wasteData == null)
+        {
+            Debug.LogWarning("WasteData is not assigned!");
+            return;
+        }
+
         spriteRenderer.sprite = wasteData.wasteSprite;
     }
-
 
     public WasteType GetWasteType()
     {
@@ -60,52 +73,59 @@ public class WastePickUp : MonoBehaviour
 
         if (distance > pickUpRange)
         {
-            Debug.Log("Too far away!");
+            FeedbackEvents.ShowFeedback("Too far away!");
             return;
         }
 
         if (playerInventory.AddToCarriedWaste(this))
         {
             isCarried = true;
-            wasteCollider.enabled = false;
-            rb.simulated = false;
-            Debug.Log($"Picked up {wasteData.wasteName}");
+
+            if (wasteCollider != null)
+                wasteCollider.enabled = false;
+
+            if (rb != null)
+                rb.simulated = false;
+
+            FeedbackEvents.ShowFeedback(
+                $"Picked up {wasteData.wasteName}!"
+            );
+        }
+        else
+        {
+            FeedbackEvents.ShowFeedback("Inventory full!");
         }
     }
 
-
     public void HighLight()
     {
-        if (wasteData == null) return;
+        if (wasteData == null)
+            return;
 
         spriteRenderer.sprite = wasteData.wasteHighlight;
     }
 
     public void UnHighLight()
     {
-        if (wasteData == null) return;
+        if (wasteData == null)
+            return;
 
         spriteRenderer.sprite = wasteData.wasteSprite;
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("MouseIndicator"))
+        if (collision.CompareTag("MouseIndicator") && !isCarried)
         {
             HighLight();
         }
-      
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("MouseIndicator"))
+        if (collision.CompareTag("MouseIndicator") && !isCarried)
         {
             UnHighLight();
         }
     }
-
-
 }
-

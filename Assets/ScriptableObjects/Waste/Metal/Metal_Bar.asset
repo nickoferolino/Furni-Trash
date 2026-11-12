@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wasteSprite: {fileID: 4744304972108034665, guid: c3a425035b8bb214fbfeffc617c78013, type: 3}
   wasteHighlight: {fileID: -2660568620664352568, guid: c3a425035b8bb214fbfeffc617c78013, type: 3}
-  wasteType: 3
+  wasteType: 2
   wasteName: Metal Bar
   wasteValue: 1
   materialItGives:
