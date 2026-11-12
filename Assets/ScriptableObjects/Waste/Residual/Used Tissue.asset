@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7019707e89d8d66479ccdbdc55bf8ab4, type: 3}
+  m_Name: Used Tissue
+  m_EditorClassIdentifier: 
+  wasteSprite: {fileID: -2229663571174283757, guid: 2966ea5b7a52dd847b8fce74b4f59bc2, type: 3}
+  wasteHighlight: {fileID: 5303006013986727918, guid: 2966ea5b7a52dd847b8fce74b4f59bc2, type: 3}
+  wasteType: 5
+  wasteName: Used Tissue
+  wasteValue: 1
+  materialItGives:
+    rawMaterial: {fileID: 11400000, guid: 90ddc47509649394d97d5492e25294d1, type: 2}

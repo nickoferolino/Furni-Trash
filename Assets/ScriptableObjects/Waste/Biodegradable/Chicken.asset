@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7019707e89d8d66479ccdbdc55bf8ab4, type: 3}
+  m_Name: Chicken
+  m_EditorClassIdentifier: 
+  wasteSprite: {fileID: 4280953152880839533, guid: 8834507c53a9ad045b02a83925d0d9f5, type: 3}
+  wasteHighlight: {fileID: -6735103063502902211, guid: 8834507c53a9ad045b02a83925d0d9f5, type: 3}
+  wasteType: 4
+  wasteName: Chicken
+  wasteValue: 1
+  materialItGives:
+    rawMaterial: {fileID: 11400000, guid: 035f6147f741902499fb722551108b5a, type: 2}
