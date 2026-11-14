@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059285375e5ca6243b47a597cf7eac80, type: 3}
   m_Name: Shredded Residual Material
   m_EditorClassIdentifier: 
-  materialSprite: {fileID: 0}
+  materialSprite: {fileID: -6635426482220756102, guid: 2966ea5b7a52dd847b8fce74b4f59bc2, type: 3}
   materialName: Shredded Residual
   materialType: 0

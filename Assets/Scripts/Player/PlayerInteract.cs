@@ -70,7 +70,6 @@ public class PlayerInteract : MonoBehaviour
             SortingBin bin = hit.GetComponent<SortingBin>();
             if (bin != null)
             {
-                Debug.Log("Sorting waste");
                 bin.TrySortTheTrash(playerInventory.GetTopWaste());
             }
         }

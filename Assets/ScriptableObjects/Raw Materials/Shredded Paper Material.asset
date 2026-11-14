@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059285375e5ca6243b47a597cf7eac80, type: 3}
   m_Name: Shredded Paper Material
   m_EditorClassIdentifier: 
-  materialSprite: {fileID: 0}
+  materialSprite: {fileID: -8302106978205862509, guid: 77ca2222db4bca04e91253696efdb418, type: 3}
   materialName: Shredded Paper
   materialType: 0

@@ -10,16 +10,14 @@ public class SortingBin : MonoBehaviour
     [SerializeField] private TextMeshPro sortedWasteCountText;
     [SerializeField] private WasteManager wasteManager;
     [SerializeField] private PlayerInventory playerInventory;
+    [SerializeField] private SortedWasteInventory sortedWasteInventory;
 
     [SerializeField] private float sortingDistance = 1.5f;
 
     public void Awake()
     {
-        gameManager = FindAnyObjectByType<GameManager>();
-        if(gameManager == null)
-        {
-            Debug.LogError("GameManager not found in the scene.");
-        }
+        sortedWasteInventory = FindAnyObjectByType<SortedWasteInventory>();
+
     }
     private void Update()
     {
@@ -29,12 +27,14 @@ public class SortingBin : MonoBehaviour
     private void OnEnable()
     {
         WasteEvents.OnWasteSorted += HandleWasteSorted;
+        WasteEvents.OnWasteStockChanged += UpdateCountText;
 
     }
 
     private void OnDisable()
     {
         WasteEvents.OnWasteSorted -= HandleWasteSorted;
+        WasteEvents.OnWasteStockChanged -= UpdateCountText;
     }
 
 
@@ -118,13 +118,13 @@ public class SortingBin : MonoBehaviour
 
     void UpdateCountText()
     {
-        if(gameManager == null)
+        if(sortedWasteInventory == null)
         {
-            Debug.LogError("GameManager is not assigned in SortingBin");
-            return;
+            Debug.Log("Sorted Waste Inventory not connected to Sorting Bin");
         }
 
-        int sortedCount = gameManager.GetTotalSortedValueByType(typeOfWasteItAccept);   
+
+        int sortedCount = sortedWasteInventory.GetTotalSortedValueByType(typeOfWasteItAccept);
         if (sortedWasteCountText != null)
         {
             

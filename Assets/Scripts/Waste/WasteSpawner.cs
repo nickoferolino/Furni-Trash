@@ -5,7 +5,9 @@ public class WasteSpawner : MonoBehaviour
 {
 
     [SerializeField] private WasteManager wasteManager;
-    [SerializeField] private WastePickUp wastePickUpPrefab; 
+    [SerializeField] private WastePickUp wastePickUpPrefab;
+
+    [SerializeField] private WasteType typeToSpawnOnly;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,7 +19,8 @@ public class WasteSpawner : MonoBehaviour
     {
         if(Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            RandomSpawnWaste();
+            //RandomSpawnWaste();
+            SpawnWasteByType();
         }
     }
 
@@ -40,6 +43,29 @@ public class WasteSpawner : MonoBehaviour
         }
 
         WastePickUp spawnWaste = Instantiate(wastePickUpPrefab, transform.position + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f),0), Quaternion.identity);
+
+        spawnWaste.Initialize(randomWaste);
+        wasteManager.AddToActiveWaste(spawnWaste);
+    }
+
+    void SpawnWasteByType()
+    {
+        if (wasteManager == null || wastePickUpPrefab == null)
+        {
+            Debug.Log("WasteManager is not assigned.");
+            return;
+        }
+
+
+        WasteData randomWaste = wasteManager.GetRandomWasteByType(typeToSpawnOnly);
+
+        if (randomWaste == null)
+        {
+            Debug.Log("No waste data available.");
+            return;
+        }
+
+        WastePickUp spawnWaste = Instantiate(wastePickUpPrefab, transform.position + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0), Quaternion.identity);
 
         spawnWaste.Initialize(randomWaste);
         wasteManager.AddToActiveWaste(spawnWaste);
