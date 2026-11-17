@@ -19,8 +19,8 @@ public class WasteSpawner : MonoBehaviour
     {
         if(Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            //RandomSpawnWaste();
-            SpawnWasteByType();
+            RandomSpawnWaste();
+            //SpawnWasteByType();
         }
     }
 
@@ -42,7 +42,7 @@ public class WasteSpawner : MonoBehaviour
             return;
         }
 
-        WastePickUp spawnWaste = Instantiate(wastePickUpPrefab, transform.position + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f),0), Quaternion.identity);
+        WastePickUp spawnWaste = Instantiate(wastePickUpPrefab, transform.position + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0), Quaternion.Euler(0f, 0f, Random.Range(0f, 180f)));
 
         spawnWaste.Initialize(randomWaste);
         wasteManager.AddToActiveWaste(spawnWaste);
